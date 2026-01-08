@@ -1,0 +1,388 @@
+/* Messuvisa - Tyylit */
+/* iPadOS 17.2 optimoitu, landscape-tila, booth frame -yhteensopiva */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+:root {
+    --bg-color: #F8FAFC;
+    --primary-color: #0056B3;
+    --primary-hover: #004494;
+    --text-color: #1E293B;
+    --text-light: #64748B;
+    --success-color: #10B981;
+    --error-color: #EF4444;
+    --timer-green: #10B981;
+    --timer-yellow: #F59E0B;
+    --timer-red: #EF4444;
+    --card-bg: #FFFFFF;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* iPad landscape -suoja-alueet booth-telineelle */
+#app {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 60px;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ==================== ALOITUSNÄKYMÄ ==================== */
+.start-content {
+    text-align: center;
+}
+
+.game-title {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 60px;
+    letter-spacing: -1px;
+}
+
+/* ==================== NAPIT ==================== */
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 48px;
+    font-size: 28px;
+    font-weight: 600;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 80px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-option {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid #E2E8F0;
+    box-shadow: var(--shadow);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-option:last-child {
+    margin-bottom: 0;
+}
+
+.btn-option:hover {
+    border-color: var(--primary-color);
+    background-color: #F0F7FF;
+}
+
+.btn-option:active {
+    transform: scale(0.98);
+    border-color: var(--primary-color);
+    background-color: #E0EFFF;
+}
+
+.btn-option.correct {
+    background-color: var(--success-color);
+    border-color: var(--success-color);
+    color: white;
+}
+
+.btn-option.wrong {
+    background-color: var(--error-color);
+    border-color: var(--error-color);
+    color: white;
+}
+
+/* ==================== PELINÄKYMÄ ==================== */
+.game-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 700px;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+    padding: 0 8px;
+}
+
+.question-counter {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.score-display {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.question-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.question-text {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 40px;
+    color: var(--text-color);
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    flex: 1;
+}
+
+/* Mobiiliversio: pystysuuntainen asettelu */
+@media only screen and (max-width: 768px) {
+    .options-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================== AJASTIN ==================== */
+.timer-container {
+    width: 100%;
+    height: 12px;
+    background-color: #E2E8F0;
+    border-radius: 6px;
+    margin-top: 32px;
+    overflow: hidden;
+}
+
+.timer-bar {
+    height: 100%;
+    width: 100%;
+    background-color: var(--timer-green);
+    border-radius: 6px;
+    transition: width 0.1s linear, background-color 0.3s ease;
+}
+
+.timer-bar.warning {
+    background-color: var(--timer-yellow);
+}
+
+.timer-bar.danger {
+    background-color: var(--timer-red);
+}
+
+/* ==================== TULOKSET-NÄKYMÄ ==================== */
+.result-container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.result-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 40px;
+}
+
+.result-info {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    padding: 32px 40px;
+    margin-bottom: 32px;
+    box-shadow: var(--shadow);
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.result-item:first-child {
+    padding-top: 0;
+}
+
+.result-label {
+    font-size: 24px;
+    color: var(--text-light);
+}
+
+.result-value {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.player-id {
+    font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+    letter-spacing: 2px;
+    color: var(--primary-color);
+}
+
+.final-score {
+    color: var(--success-color);
+    font-size: 36px;
+}
+
+.qr-container {
+    margin: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-code {
+    background-color: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 16px;
+}
+
+.qr-code canvas,
+.qr-code img {
+    display: block;
+}
+
+.qr-instruction {
+    font-size: 20px;
+    color: var(--text-light);
+    line-height: 1.4;
+}
+
+/* ==================== RESPONSIIVINEN iPad-LANDSCAPE ==================== */
+@media only screen and (orientation: landscape) and (max-height: 800px) {
+    #app {
+        padding: 30px 50px;
+    }
+
+    .game-title {
+        font-size: 56px;
+        margin-bottom: 48px;
+    }
+
+    .btn {
+        font-size: 24px;
+        padding: 18px 40px;
+        min-height: 70px;
+    }
+
+    .question-text {
+        font-size: 28px;
+        margin-bottom: 32px;
+    }
+
+    .btn-option {
+        font-size: 22px;
+        padding: 20px 28px;
+    }
+
+    .question-counter,
+    .score-display {
+        font-size: 22px;
+    }
+}
+
+/* Pienemmät näytöt tai vanhemmat iPadit */
+@media only screen and (orientation: landscape) and (max-height: 600px) {
+    #app {
+        padding: 20px 40px;
+    }
+
+    .game-title {
+        font-size: 48px;
+        margin-bottom: 36px;
+    }
+
+    .question-text {
+        font-size: 24px;
+        margin-bottom: 24px;
+    }
+
+    .btn-option {
+        font-size: 20px;
+        padding: 16px 24px;
+        margin-bottom: 12px;
+    }
+
+    .timer-container {
+        margin-top: 24px;
+        height: 10px;
+    }
+}
+
+/* Estä zoomaus iPadilla */
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 16px;
+    }
+}

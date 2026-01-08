@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Messuvisa</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Aloitusnäkymä -->
+        <div id="start-screen" class="screen active">
+            <div class="start-content">
+                <h1 class="game-title">Messuvisa</h1>
+                <button id="start-btn" class="btn btn-primary btn-large">Aloita</button>
+            </div>
+        </div>
+
+        <!-- Pelinäkymä -->
+        <div id="game-screen" class="screen">
+            <div class="game-container">
+                <div class="game-header">
+                    <div class="question-counter">
+                        Kysymys <span id="current-question">1</span>/15
+                    </div>
+                    <div class="score-display">
+                        Pisteet: <span id="score">0</span>
+                    </div>
+                </div>
+                
+                <div class="question-container">
+                    <h2 id="question-text" class="question-text">Ladataan kysymystä...</h2>
+                    <div id="options-container" class="options-container">
+                        <!-- Vastausvaihtoehdot lisätään dynaamisesti -->
+                    </div>
+                </div>
+
+                <div class="timer-container">
+                    <div id="timer-bar" class="timer-bar"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tulokset-näkymä -->
+        <div id="result-screen" class="screen">
+            <div class="result-container">
+                <h2 class="result-title">Peli päättyi!</h2>
+                
+                <div class="result-info">
+                    <div class="result-item">
+                        <span class="result-label">Pelaaja-ID:</span>
+                        <span id="player-id" class="result-value player-id">---</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="result-label">Pisteet:</span>
+                        <span id="final-score" class="result-value final-score">0</span>
+                    </div>
+                </div>
+
+                <div class="qr-container">
+                    <div id="qr-code" class="qr-code"></div>
+                    <p class="qr-instruction">Skannaa QR-koodi ja syötä<br>Pelaaja-ID yhteystietolomakkeeseen</p>
+                </div>
+
+                <button id="restart-btn" class="btn btn-primary">Palaa</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="qrcode.min.js"></script>
+    <script src="kysymyspankki1.js"></script>
+    <script src="kysymyspankki2.js"></script>
+    <script src="kysymyspankki3.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
