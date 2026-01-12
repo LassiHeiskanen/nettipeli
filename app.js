@@ -110,6 +110,7 @@
         elements.playerName = document.getElementById('player-name');
         elements.playerPhone = document.getElementById('player-phone');
         elements.submitScoreBtn = document.getElementById('submit-score-btn');
+        elements.skipBtn = document.getElementById('skip-btn');
 
         elements.leaderboardBody = document.getElementById('leaderboard-body');
         elements.leaderboardLoading = document.getElementById('leaderboard-loading');
@@ -133,6 +134,12 @@
         // Tulosten lähetys
         elements.submitScoreBtn.addEventListener('click', handleScoreSubmit);
         elements.submitScoreBtn.addEventListener('touchend', handleScoreSubmit, { passive: false });
+
+        // Ohita-nappi
+        if (elements.skipBtn) {
+            elements.skipBtn.addEventListener('click', handleSkipSubmit);
+            elements.skipBtn.addEventListener('touchend', handleSkipSubmit, { passive: false });
+        }
 
         // Uudelleenaloitus
         elements.restartBtn.addEventListener('click', resetGame);
@@ -396,16 +403,23 @@
 
     /**
      * Laskee pisteet nykyisestä kysymyksestä
+     * Pistemäärä per kysymys = jäljellä oleva aika × (400/15)
+     * Maksimi 400 pistettä = 15 kysymystä × 20 sekuntia × 1.33 pistettä/sekunti
      * @returns {number} Saadut pisteet
      */
     function calculatePoints() {
-        // Pistemäärä per kysymys = (jäljellä oleva aika / 20s) × 26.66
-        // Maksimi 400 = 20s × 20p/s × 15 kysymystä
-        // Per kysymys max 26.66 pistettä
-        const pointsPerQuestion = 27; // Pyöristetty ylös
-        const timeFactor = gameState.timeRemaining / config.timePerQuestion;
-
-        return Math.round(pointsPerQuestion * timeFactor);
+        // Yksinkertainen kaava: pisteet = jäljellä oleva aika sekunneissa
+        // 
+        // Tulokset:
+        // - 20s → 20 pistettä
+        // - 15s → 15 pistettä
+        // - 10s → 10 pistettä
+        // - 5s → 5 pistettä
+        // - 1s → 1 piste
+        // - 0s → 0 pistettä
+        // Yhteensä max 300 pistettä (20 × 15)
+        
+        return Math.round(gameState.timeRemaining);
     }
 
     /**
@@ -519,6 +533,22 @@
             elements.submitScoreBtn.disabled = false;
             elements.submitScoreBtn.textContent = 'TALLENNA TULOS';
         }
+    }
+
+    /**
+     * Käsittelee "OHITA" napin painalluksen
+     * Siirtyy suoraan tulostaulukkoon tallentamatta tulosta
+     */
+    function handleSkipSubmit() {
+        console.log('Pelaaja ohitti tulosten tallennuksen');
+        
+        // Sulje virtuaalinäppäimistö jos se on auki
+        if (typeof window.VirtualKeyboard !== 'undefined') {
+            window.VirtualKeyboard.hideKeyboard();
+        }
+        
+        // Siirty suoraan tulostaulukkoon
+        showLeaderboard();
     }
 
     /**

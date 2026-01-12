@@ -1,4 +1,4 @@
-# Kylmätekniikkapeli
+# Kylmätekniikkapeli / versio ties kuinka mones
 
 Selainpohjainen tietovisapeli, joka on suunniteltu käytettäväksi tabletilla (erityisesti iPadilla) messu- ja esittelytilanteissa. Sovellus toimii suoraan selaimessa ilman erillistä asennusta ja julkaistaan GitHub Pagesin kautta.
 

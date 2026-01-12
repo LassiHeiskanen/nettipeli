@@ -280,13 +280,15 @@
         keyboardState.currentMode = inputType === 'phone' ? 'number' : 'text';
         keyboardState.inputValue = getCurrentInputValue();
 
-        // Valitse oikea näppäimistö
+        // Piilota molemmat näppäimistöt ensin
+        elements.textKeyboard.classList.add('hidden');
+        elements.numberKeyboard.classList.add('hidden');
+
+        // Näytä vain oikea näppäimistö
         if (keyboardState.currentMode === 'number') {
-            elements.textKeyboard.classList.add('hidden');
             elements.numberKeyboard.classList.remove('hidden');
         } else {
             elements.textKeyboard.classList.remove('hidden');
-            elements.numberKeyboard.classList.add('hidden');
         }
 
         // Näytä overlay

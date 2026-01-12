@@ -105,7 +105,10 @@
                         </div>
                     </div>
 
-                    <button type="submit" id="submit-score-btn" class="btn btn-primary btn-large" disabled>TALLENNA TULOS</button>
+                    <div class="form-buttons">
+                        <button type="button" id="skip-btn" class="btn btn-secondary btn-large">OHITA</button>
+                        <button type="submit" id="submit-score-btn" class="btn btn-primary btn-large" disabled>TALLENNA TULOS</button>
+                    </div>
                 </form>
             </section>
 
@@ -139,7 +142,7 @@
     <div id="keyboard-overlay" class="keyboard-overlay hidden">
         <div id="keyboard-container" class="keyboard-container">
             <!-- Text Keyboard -->
-            <div id="text-keyboard" class="keyboard text-keyboard">
+            <div id="text-keyboard" class="keyboard text-keyboard hidden">
                 <div class="keyboard-row">
                     <button type="button" class="key" data-key="q">q</button>
                     <button type="button" class="key" data-key="w">w</button>
