@@ -11,8 +11,8 @@
 
 const SUPABASE_CONFIG = {
     // Korvaa nämä omilla Supabase-projektisi arvoilla
-    url: 'https://your-project-id.supabase.co',
-    anonKey: 'your-anon-key-here',
+    url: 'https://recvgydiqafhhpvkgtjl.supabase.co',
+    anonKey: 'sb_publishable_ldCpSQyLTXdJV28ilC_1Tg_J6jrMdld',
     
     // Taulun nimi (oletus)
     tableName: 'leaderboard'
