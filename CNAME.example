@@ -1,0 +1,11 @@
+# Kylmätekniikkapeli - CNAME (malli)
+#
+# Jos haluat käyttää omaa verkkotunnusta:
+# 1. Poista #-merkki rivin edestä
+# 2. Korvaa esimerkki omalla verkkotunnuksellasi
+# 3. Nimeä tiedosto muotoon CNAME (ilman .example-päätettä)
+#
+# Esimerkki:
+# peli.yritys.fi
+#
+# Lisätietoja: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site

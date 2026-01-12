@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kylmätekniikkapeli</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Safety zone container - 70% of screen -->
+    <div id="safety-zone">
+        <div id="app-container">
+            
+            <!-- Start Screen -->
+            <section id="start-screen" class="screen active">
+                <div class="logo-container">
+                    <svg class="logo-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="#0284c7" stroke-width="4"/>
+                        <path d="M30 50 L45 35 L55 45 L70 30" stroke="#0284c7" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M30 60 L70 60" stroke="#0284c7" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="35" cy="70" r="5" fill="#0284c7"/>
+                        <circle cx="50" cy="70" r="5" fill="#0284c7"/>
+                        <circle cx="65" cy="70" r="5" fill="#0284c7"/>
+                    </svg>
+                </div>
+                <h1 class="game-title">Kylmätekniikkapeli</h1>
+                <p class="game-subtitle">Testaa tietosi kylmätekniikasta!</p>
+                <div class="game-info">
+                    <div class="info-item">
+                        <span class="info-icon">📋</span>
+                        <span>15 kysymystä</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⏱️</span>
+                        <span>20 sek / kysymys</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🏆</span>
+                        <span>Maksimi 400 pistettä</span>
+                    </div>
+                </div>
+                <button id="start-btn" class="btn btn-primary btn-large">ALOITA PELI</button>
+            </section>
+
+            <!-- Quiz Screen -->
+            <section id="quiz-screen" class="screen">
+                <div class="quiz-header">
+                    <div class="question-counter">
+                        <span id="current-question">1</span>/15
+                    </div>
+                    <div class="score-display">
+                        <span class="score-label">Pisteet:</span>
+                        <span id="total-score">0</span>
+                    </div>
+                </div>
+                
+                <div class="timer-container">
+                    <div id="timer-bar" class="timer-bar"></div>
+                    <span id="timer-text" class="timer-text">20s</span>
+                </div>
+
+                <div class="question-container">
+                    <h2 id="question-text" class="question-text">Kysymys tulee tähän...</h2>
+                </div>
+
+                <div id="answers-grid" class="answers-grid">
+                    <button class="answer-btn" data-index="0">Vastaus A</button>
+                    <button class="answer-btn" data-index="1">Vastaus B</button>
+                    <button class="answer-btn" data-index="2">Vastaus C</button>
+                    <button class="answer-btn" data-index="3">Vastaus D</button>
+                </div>
+
+                <div class="difficulty-indicator">
+                    <span id="difficulty-badge" class="difficulty-badge easy">Lämmittely</span>
+                </div>
+            </section>
+
+            <!-- Results Input Screen -->
+            <section id="results-input-screen" class="screen">
+                <div class="results-header">
+                    <h2 class="results-title">Pelisi on päättynyt!</h2>
+                    <div class="final-score">
+                        <span class="final-score-label">Kokonaispistemäärä</span>
+                        <span id="final-score-display" class="final-score-value">0</span>
+                    </div>
+                </div>
+
+                <form id="player-form" class="player-form">
+                    <div class="form-group">
+                        <label for="player-name" class="form-label">Nimi *</label>
+                        <div class="virtual-input-container">
+                            <input type="text" id="player-name" class="virtual-input" placeholder="Syötä nimesi" readonly autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                            <button type="button" class="input-trigger-btn" data-input="name">Näytä näppäimistö</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="player-phone" class="form-label">Puhelinnumero (valinnainen)</label>
+                        <div class="virtual-input-container">
+                            <input type="tel" id="player-phone" class="virtual-input" placeholder="Syötä puhelinnumero" readonly autocomplete="off">
+                            <button type="button" class="input-trigger-btn" data-input="phone">Näytä näppäimistö</button>
+                        </div>
+                    </div>
+
+                    <button type="submit" id="submit-score-btn" class="btn btn-primary btn-large" disabled>TALLENNA TULOS</button>
+                </form>
+            </section>
+
+            <!-- Leaderboard Screen -->
+            <section id="leaderboard-screen" class="screen">
+                <h2 class="leaderboard-title">Top 5 - Tulokset</h2>
+                
+                <div class="leaderboard-container">
+                    <div id="leaderboard-loading" class="loading-spinner"></div>
+                    <table id="leaderboard-table" class="leaderboard-table">
+                        <thead>
+                            <tr>
+                                <th>Sija</th>
+                                <th>Nimi</th>
+                                <th>Pisteet</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboard-body">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <button id="restart-btn" class="btn btn-primary btn-large">ALOITA ALUSTA</button>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Virtual Keyboard Overlay -->
+    <div id="keyboard-overlay" class="keyboard-overlay hidden">
+        <div id="keyboard-container" class="keyboard-container">
+            <!-- Text Keyboard -->
+            <div id="text-keyboard" class="keyboard text-keyboard">
+                <div class="keyboard-row">
+                    <button type="button" class="key" data-key="q">q</button>
+                    <button type="button" class="key" data-key="w">w</button>
+                    <button type="button" class="key" data-key="e">e</button>
+                    <button type="button" class="key" data-key="r">r</button>
+                    <button type="button" class="key" data-key="t">t</button>
+                    <button type="button" class="key" data-key="y">y</button>
+                    <button type="button" class="key" data-key="u">u</button>
+                    <button type="button" class="key" data-key="i">i</button>
+                    <button type="button" class="key" data-key="o">o</button>
+                    <button type="button" class="key" data-key="p">p</button>
+                    <button type="button" class="key key-wide key-backspace" data-key="backspace">⌫</button>
+                </div>
+                <div class="keyboard-row">
+                    <div class="spacer-half"></div>
+                    <button type="button" class="key" data-key="a">a</button>
+                    <button type="button" class="key" data-key="s">s</button>
+                    <button type="button" class="key" data-key="d">d</button>
+                    <button type="button" class="key" data-key="f">f</button>
+                    <button type="button" class="key" data-key="g">g</button>
+                    <button type="button" class="key" data-key="h">h</button>
+                    <button type="button" class="key" data-key="j">j</button>
+                    <button type="button" class="key" data-key="k">k</button>
+                    <button type="button" class="key" data-key="l">l</button>
+                    <div class="spacer-half"></div>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key key-wide" data-key="caps">⇧</button>
+                    <button type="button" class="key" data-key="z">z</button>
+                    <button type="button" class="key" data-key="x">x</button>
+                    <button type="button" class="key" data-key="c">c</button>
+                    <button type="button" class="key" data-key="v">v</button>
+                    <button type="button" class="key" data-key="b">b</button>
+                    <button type="button" class="key" data-key="n">n</button>
+                    <button type="button" class="key" data-key="m">m</button>
+                    <button type="button" class="key key-wide" data-key="backspace">⌫</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key key-special" data-key="ä">ä</button>
+                    <button type="button" class="key key-special" data-key="ö">ö</button>
+                    <button type="button" class="key key-special" data-key="å">å</button>
+                    <button type="button" class="key key-space" data-key="space">Välilyönti</button>
+                    <button type="button" class="key key-action key-enter" data-key="enter">ENTER</button>
+                </div>
+            </div>
+
+            <!-- Number Keyboard -->
+            <div id="number-keyboard" class="keyboard number-keyboard hidden">
+                <div class="keyboard-row">
+                    <button type="button" class="key" data-key="1">1</button>
+                    <button type="button" class="key" data-key="2">2</button>
+                    <button type="button" class="key" data-key="3">3</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key" data-key="4">4</button>
+                    <button type="button" class="key" data-key="5">5</button>
+                    <button type="button" class="key" data-key="6">6</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key" data-key="7">7</button>
+                    <button type="button" class="key" data-key="8">8</button>
+                    <button type="button" class="key" data-key="9">9</button>
+                </div>
+                <div class="keyboard-row">
+                    <button type="button" class="key key-action" data-key="clear">TYHJENNÄ</button>
+                    <button type="button" class="key" data-key="0">0</button>
+                    <button type="button" class="key key-action key-enter" data-key="enter">ENTER</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="questions.js"></script>
+    <script src="supabase.js"></script>
+    <script src="keyboard.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
