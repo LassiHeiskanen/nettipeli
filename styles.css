@@ -1,809 +1,721 @@
-/* Kylmätekniikkapeli - Stylesheet */
-/* Optimized for iPad tablet use in trade show environments */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-
-/* Apuluokat */
-.hidden {
-    display: none !important;
-}
-
-html, body {
-    height: 100%;
-    width: 100%;
-    overflow: hidden;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #0f172a;
-    color: #334155;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-/* ============================================
-   SAFETY ZONE - 70% of screen (critical for tablet stand)
-   ============================================ */
-
-#safety-zone {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #0f172a;
-}
-
-#app-container {
-    width: 70vw;
-    height: 70vh;
-    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-    border-radius: 24px;
-    box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-    position: relative;
-}
-
-/* ============================================
-   SCREEN MANAGEMENT
-   ============================================ */
-
-.screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-    display: none;
-    flex-direction: column;
-    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.screen.active {
-    display: flex;
-    opacity: 1;
-}
-
-/* ============================================
-   START SCREEN
-   ============================================ */
-
-#start-screen {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 24px;
-}
-
-.logo-container {
-    margin-bottom: 16px;
-}
-
-.logo-icon {
-    width: 120px;
-    height: 120px;
-    animation: pulse-slow 3s ease-in-out infinite;
-}
-
-@keyframes pulse-slow {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.05); opacity: 0.9; }
-}
-
-.game-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #0284c7;
-    line-height: 1.2;
-    margin-bottom: 8px;
-}
-
-.game-subtitle {
-    font-size: 1.25rem;
-    color: #64748b;
-    margin-bottom: 32px;
-}
-
-.game-info {
-    display: flex;
-    gap: 32px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.info-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
-    color: #475569;
-    padding: 12px 20px;
-    background-color: #f1f5f9;
-    border-radius: 12px;
-}
-
-.info-icon {
-    font-size: 1.25rem;
-}
-
-/* ============================================
-   BUTTONS
-   ============================================ */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 32px;
-    font-size: 1.125rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    min-height: 56px;
-    touch-action: manipulation;
-}
-
-.btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    color: white;
-    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.4);
-}
-
-.btn-primary:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(2, 132, 199, 0.5);
-}
-
-.btn-primary:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.btn-secondary {
-    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
-    color: white;
-    box-shadow: 0 4px 14px rgba(100, 116, 139, 0.4);
-}
-
-.btn-secondary:hover:not(:disabled) {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(100, 116, 139, 0.5);
-}
-
-.btn-secondary:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.btn-large {
-    padding: 20px 48px;
-    font-size: 1.375rem;
-    min-height: 72px;
-    border-radius: 20px;
-}
-
-/* ============================================
-   QUIZ SCREEN
-   ============================================ */
-
-#quiz-screen {
-    padding: 32px 40px;
-}
-
-.quiz-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.question-counter {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #64748b;
-}
-
-#current-question {
-    color: #0284c7;
-    font-size: 1.5rem;
-}
-
-.score-display {
-    font-size: 1.125rem;
-    color: #475569;
-}
-
-#total-score {
-    font-weight: 700;
-    color: #0284c7;
-    font-size: 1.375rem;
-    margin-left: 8px;
-}
-
-/* Timer */
-.timer-container {
-    position: relative;
-    width: 100%;
-    height: 12px;
-    background-color: #e2e8f0;
-    border-radius: 6px;
-    overflow: hidden;
-    margin-bottom: 32px;
-}
-
-.timer-bar {
-    height: 100%;
-    width: 100%;
-    background: linear-gradient(90deg, #22c55e 0%, #0284c7 50%, #ef4444 100%);
-    border-radius: 6px;
-    transform-origin: left;
-    transition: width 0.1s linear;
-}
-
-.timer-bar.warning {
-    background: linear-gradient(90deg, #f59e0b 0%, #ef4444 100%);
-}
-
-.timer-bar.critical {
-    background: #ef4444;
-    animation: pulse-timer 0.5s ease-in-out infinite;
-}
-
-@keyframes pulse-timer {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.7; }
-}
-
-.timer-text {
-    position: absolute;
-    right: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #64748b;
-}
-
-/* Question */
-.question-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 24px;
-}
-
-.question-text {
-    font-size: 1.625rem;
-    font-weight: 600;
-    color: #1e293b;
-    text-align: center;
-    line-height: 1.4;
-    max-width: 100%;
-}
-
-/* Answers Grid */
-.answers-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.answer-btn {
-    padding: 24px 20px;
-    font-size: 1.125rem;
-    font-weight: 500;
-    background-color: #ffffff;
-    border: 2px solid #e2e8f0;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-align: center;
-    color: #334155;
-    min-height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    word-break: break-word;
-}
-
-.answer-btn:hover:not(:disabled) {
-    border-color: #0284c7;
-    background-color: #f0f9ff;
-    transform: translateY(-2px);
-}
-
-.answer-btn:active:not(:disabled) {
-    transform: translateY(0);
-}
-
-.answer-btn.correct {
-    background-color: #dcfce7;
-    border-color: #22c55e;
-    color: #166534;
-}
-
-.answer-btn.incorrect {
-    background-color: #fee2e2;
-    border-color: #ef4444;
-    color: #991b1b;
-}
-
-.answer-btn.disabled {
-    pointer-events: none;
-}
-
-/* Difficulty Badge */
-.difficulty-indicator {
-    text-align: center;
-}
-
-.difficulty-badge {
-    display: inline-block;
-    padding: 8px 20px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.difficulty-badge.easy {
-    background-color: #dcfce7;
-    color: #166534;
-}
-
-.difficulty-badge.medium {
-    background-color: #fef3c7;
-    color: #92400e;
-}
-
-.difficulty-badge.hard {
-    background-color: #fee2e2;
-    color: #991b1b;
-}
-
-/* ============================================
-   RESULTS INPUT SCREEN
-   ============================================ */
-
-#results-input-screen {
-    justify-content: center;
-    padding: 40px 60px;
-}
-
-.results-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.results-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0284c7;
-    margin-bottom: 24px;
-}
-
-.final-score {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-}
-
-.final-score-label {
-    font-size: 1rem;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.final-score-value {
-    font-size: 4rem;
-    font-weight: 700;
-    color: #0284c7;
-    line-height: 1;
-}
-
-.player-form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    max-width: 500px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.form-buttons {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.form-buttons .btn {
-    flex: 1;
-    min-width: 140px;
-    max-width: 200px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-label {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #475569;
-}
-
-.virtual-input-container {
-    display: flex;
-    gap: 12px;
-}
-
-.virtual-input {
-    flex: 1;
-    padding: 16px 20px;
-    font-size: 1.125rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    background-color: #ffffff;
-    color: #1e293b;
-    cursor: pointer;
-}
-
-.virtual-input:focus {
-    outline: none;
-    border-color: #0284c7;
-    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
-}
-
-.virtual-input::placeholder {
-    color: #94a3b8;
-}
-
-.input-trigger-btn {
-    padding: 16px 24px;
-    font-size: 1rem;
-    font-weight: 600;
-    background-color: #f1f5f9;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    color: #475569;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.2s ease;
-    min-width: 140px;
-}
-
-.input-trigger-btn:hover {
-    background-color: #e2e8f0;
-    border-color: #cbd5e1;
-}
-
-/* ============================================
-   LEADERBOARD SCREEN
-   ============================================ */
-
-#leaderboard-screen {
-    justify-content: center;
-    padding: 40px 60px;
-}
-
-.leaderboard-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #0284c7;
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.leaderboard-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 32px;
-    overflow: hidden;
-}
-
-.leaderboard-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1.125rem;
-}
-
-.leaderboard-table th {
-    text-align: left;
-    padding: 16px;
-    font-weight: 600;
-    color: #64748b;
-    border-bottom: 2px solid #e2e8f0;
-}
-
-.leaderboard-table td {
-    padding: 16px;
-    border-bottom: 1px solid #f1f5f9;
-    color: #334155;
-}
-
-.leaderboard-table tbody tr:nth-child(1) {
-    background: linear-gradient(90deg, #fef3c7 0%, transparent 100%);
-}
-
-.leaderboard-table tbody tr:nth-child(1) td {
-    font-weight: 700;
-    color: #92400e;
-}
-
-.leaderboard-table tbody tr:nth-child(2) {
-    background: linear-gradient(90deg, #e2e8f0 0%, transparent 100%);
-}
-
-.leaderboard-table tbody tr:nth-child(3) {
-    background: linear-gradient(90deg, #fed7aa 0%, transparent 100%);
-}
-
-.loading-spinner {
-    display: none;
-    width: 40px;
-    height: 40px;
-    border: 4px solid #e2e8f0;
-    border-top-color: #0284c7;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    margin: 40px auto;
-}
-
-.loading-spinner.active {
-    display: block;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-.leaderboard-empty {
-    text-align: center;
-    padding: 40px;
-    color: #64748b;
-    font-style: italic;
-}
-
-/* ============================================
-   VIRTUAL KEYBOARD - Pienempi ja toimiva
-   ============================================ */
-
-.keyboard-overlay {
-    position: fixed;
-    bottom: 80px;
-    left: 0;
-    width: 100%;
-    background-color: rgba(15, 23, 42, 0.98);
-    padding: 8px;
-    padding-bottom: 20px;
-    z-index: 1000;
-    display: none;
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.keyboard-overlay.visible {
-    display: block;
-}
-
-.keyboard-container {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.keyboard {
-    display: none;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.keyboard-row {
-    display: flex;
-    justify-content: center;
-    gap: 3px;
-}
-
-.key {
-    min-width: 28px;
-    height: 36px;
-    padding: 0 6px;
-    font-size: 0.9rem;
-    background: linear-gradient(145deg, #334155 0%, #1e293b 100%);
-    border: none;
-    border-radius: 5px;
-    color: #f8fafc;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.1s ease;
-}
-
-.key:active {
-    background: #0284c7;
-    transform: scale(0.95);
-}
-
-.key-wide {
-    min-width: 40px;
-}
-
-.key-special {
-    min-width: 32px;
-    height: 36px;
-    font-size: 0.85rem;
-}
-
-.key-space {
-    flex: 1;
-    max-width: 120px;
-    height: 36px;
-    font-size: 0.8rem;
-}
-
-.key-action {
-    background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
-    font-weight: 600;
-    height: 36px;
-}
-
-.key-enter {
-    background: linear-gradient(145deg, #22c55e 0%, #16a34a 100%);
-    height: 36px;
-}
-
-.spacer-half {
-    width: 14px;
-}
-
-/* Number Keyboard */
-.number-keyboard .keyboard-row {
-    gap: 8px;
-}
-
-.number-keyboard .key {
-    flex: 1;
-    height: 44px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    border-radius: 8px;
-}
-
-/* ============================================
-   ANIMATIONS
-   ============================================ */
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.screen.active .game-title,
-.screen.active .game-subtitle,
-.screen.active .game-info,
-.screen.active .btn,
-.screen.active .question-text,
-.screen.active .answer-btn {
-    animation: fadeIn 0.4s ease forwards;
-}
-
-/* ============================================
-   RESPONSIVE ADJUSTMENTS
-   ============================================ */
-
-@media (max-width: 768px) {
-    #app-container {
-        width: 90vw;
-        height: 90vh;
-        border-radius: 16px;
+/**
+ * Kylmätekniikkapeli - Pääsovelluslogiikka
+ * 
+ * Tämä tiedosto käsittelee pelin kulun, ajastuksen,
+ * pisteytyksen ja näkymien hallinnan.
+ */
+
+(function() {
+    'use strict';
+
+    // ============================================
+    // PELIN TILA
+    // ============================================
+
+    const gameState = {
+        currentScreen: 'start',
+        questions: [],
+        currentQuestionIndex: 0,
+        totalScore: 0,
+        questionStartTime: 0,
+        timeRemaining: 20,
+        timerInterval: null,
+        isAnswered: false,
+        difficultyOrder: ['easy', 'medium', 'hard'] // Kysymysten järjestys
+    };
+
+    // ============================================
+    // KONFIGURAATIO
+    // ============================================
+
+    const config = {
+        questionsPerBank: 5,
+        timePerQuestion: 20, // sekuntia
+        maxScore: 400, // Teoreettinen maksimi (20s × 20p/s × 15 kysymystä)
+        transitionDelay: 1000, // ms ennen siirtymistä seuraavaan kysymykseen
+        animationDelay: 1500 // ms ennen näytön vaihtoa tulosten jälkeen
+    };
+
+    // ============================================
+    // DOM-ELEMENTIT
+    // ============================================
+
+    const elements = {
+        // Näytöt
+        startScreen: null,
+        quizScreen: null,
+        resultsInputScreen: null,
+        leaderboardScreen: null,
+
+        // Aloitusnäkymä
+        startBtn: null,
+
+        // Quiz-näkymä
+        questionText: null,
+        answersGrid: null,
+        answerBtns: null,
+        timerBar: null,
+        timerText: null,
+        currentQuestionNum: null,
+        totalScoreDisplay: null,
+        difficultyBadge: null,
+
+        // Tulosten syöttönäkymä
+        finalScoreDisplay: null,
+        playerName: null,
+        playerPhone: null,
+        submitScoreBtn: null,
+
+        // Leaderboard-näkymä
+        leaderboardBody: null,
+        leaderboardLoading: null,
+        restartBtn: null
+    };
+
+    // ============================================
+    // ALUSTUS
+    // ============================================
+
+    /**
+     * Alustaa sovelluksen
+     */
+    function init() {
+        cacheElements();
+        bindEvents();
+        showScreen('start');
+        console.log('Kylmätekniikkapeli alustettu');
     }
 
-    .screen {
-        padding: 24px;
+    /**
+     * Tallentaa viittaukset DOM-elementteihin
+     */
+    function cacheElements() {
+        elements.startScreen = document.getElementById('start-screen');
+        elements.quizScreen = document.getElementById('quiz-screen');
+        elements.resultsInputScreen = document.getElementById('results-input-screen');
+        elements.leaderboardScreen = document.getElementById('leaderboard-screen');
+
+        elements.startBtn = document.getElementById('start-btn');
+
+        elements.questionText = document.getElementById('question-text');
+        elements.answersGrid = document.getElementById('answers-grid');
+        elements.answerBtns = elements.answersGrid.querySelectorAll('.answer-btn');
+        elements.timerBar = document.getElementById('timer-bar');
+        elements.timerText = document.getElementById('timer-text');
+        elements.currentQuestionNum = document.getElementById('current-question');
+        elements.totalScoreDisplay = document.getElementById('total-score');
+        elements.difficultyBadge = document.getElementById('difficulty-badge');
+
+        elements.finalScoreDisplay = document.getElementById('final-score-display');
+        elements.playerName = document.getElementById('player-name');
+        elements.playerPhone = document.getElementById('player-phone');
+        elements.submitScoreBtn = document.getElementById('submit-score-btn');
+        elements.skipBtn = document.getElementById('skip-btn');
+
+        elements.leaderboardBody = document.getElementById('leaderboard-body');
+        elements.leaderboardLoading = document.getElementById('leaderboard-loading');
+        elements.restartBtn = document.getElementById('restart-btn');
     }
 
-    .game-title {
-        font-size: 1.75rem;
+    /**
+     * Sitoo tapahtumakuuntelijat
+     */
+    function bindEvents() {
+        // Aloitusnäkymä
+        elements.startBtn.addEventListener('click', startGame);
+        elements.startBtn.addEventListener('touchend', startGame, { passive: false });
+
+        // Vastausnapit
+        elements.answerBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => handleAnswer(index));
+            btn.addEventListener('touchend', () => handleAnswer(index), { passive: false });
+        });
+
+        // Tulosten lähetys
+        elements.submitScoreBtn.addEventListener('click', handleScoreSubmit);
+        elements.submitScoreBtn.addEventListener('touchend', handleScoreSubmit, { passive: false });
+
+        // Ohita-nappi
+        if (elements.skipBtn) {
+            elements.skipBtn.addEventListener('click', handleSkipSubmit);
+            elements.skipBtn.addEventListener('touchend', handleSkipSubmit, { passive: false });
+        }
+
+        // Uudelleenaloitus
+        elements.restartBtn.addEventListener('click', resetGame);
+        elements.restartBtn.addEventListener('touchend', resetGame, { passive: false });
+
+        // Formin submit estäminen
+        const form = document.getElementById('player-form');
+        if (form) {
+            form.addEventListener('submit', (e) => e.preventDefault());
+        }
     }
 
-    .question-text {
-        font-size: 1.25rem;
+    // ============================================
+    // NÄKMIEN HALLINTA
+    // ============================================
+
+    /**
+     * Vaihtaa näkymää
+     * @param {string} screenName - Näkymän nimi
+     */
+    function showScreen(screenName) {
+        // Piilota kaikki näkymät
+        document.querySelectorAll('.screen').forEach(screen => {
+            screen.classList.remove('active');
+        });
+
+        // Näytä pyydetty näkymä
+        const targetScreen = document.getElementById(`${screenName}-screen`);
+        if (targetScreen) {
+            targetScreen.classList.add('active');
+            gameState.currentScreen = screenName;
+        }
     }
 
-    .answer-btn {
-        min-height: 60px;
-        padding: 16px 12px;
-        font-size: 1rem;
+    // ============================================
+    // PELIN LOGIIKKA
+    // ============================================
+
+    /**
+     * Aloittaa uuden pelin
+     */
+    function startGame() {
+        // Alusta pelin tila
+        gameState.questions = [];
+        gameState.currentQuestionIndex = 0;
+        gameState.totalScore = 0;
+        gameState.isAnswered = false;
+        gameState.timerInterval = null;
+
+        // Valitse kysymykset kysymyspankeista
+        selectQuestions();
+
+        // Siirtymään quiz-näkymään
+        showScreen('quiz');
+
+        // Näytä ensimmäinen kysymys
+        displayQuestion();
+
+        // Aloita ajastin pienen viiveen jälkeen (varmistaa näkymän päivityksen)
+        setTimeout(startTimer, 50);
     }
 
-    .answers-grid {
-        gap: 12px;
+    /**
+     * Valitsee kysymykset kysymyspankeista
+     */
+    function selectQuestions() {
+        // Tarkista onko kysymyspankit ladattu
+        console.log('Tarkistetaan kysymyspankkeja...');
+        console.log('window.questionBanks:', typeof window.questionBanks);
+        
+        const banks = window.questionBanks;
+        if (!banks) {
+            console.error('Kysymyspankkeja ei löydy! Tarkista, että questions.js on ladattu.');
+            alert('Virhe: Kysymyksiä ei löydy. Lataa sivu uudelleen.');
+            return;
+        }
+
+        console.log('Kysymyspankit löytyvät:', Object.keys(banks));
+
+        // Sekoita ja valitse 5 kysymystä jokaisesta pankista
+        gameState.difficultyOrder.forEach(difficulty => {
+            const bank = banks[difficulty];
+            console.log(`Haetaan ${difficulty} kysymyksiä:`, bank ? bank.length + ' kpl' : 'Ei löydy');
+            
+            if (bank && bank.length > 0) {
+                const selected = shuffleArray(bank).slice(0, config.questionsPerBank);
+                gameState.questions.push(...selected.map(q => ({
+                    ...q,
+                    difficulty: difficulty
+                })));
+            }
+        });
+
+        console.log(`Valittu ${gameState.questions.length} kysymystä`);
+        
+        // Tarkista onko kysymyksiä valittu
+        if (gameState.questions.length === 0) {
+            console.error('Yhtään kysymystä ei valittu!');
+            alert('Virhe: Kysymyksiä ei voitu ladata.');
+        }
     }
 
-    .final-score-value {
-        font-size: 3rem;
+    /**
+         * Sekoittaa taulukon (Fisher-Yates)
+     * @param {Array} array - Sekoitettava taulukko
+     * @returns {Array} Sekoitettu taulukko
+     */
+    function shuffleArray(array) {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
     }
 
-    .game-info {
-        flex-direction: column;
-        gap: 12px;
+    /**
+     * Näyttää nykyisen kysymyksen
+     */
+    function displayQuestion() {
+        const question = gameState.questions[gameState.currentQuestionIndex];
+        
+        if (!question) {
+            endGame();
+            return;
+        }
+
+        gameState.isAnswered = false;
+
+        // Päivitä kysymysteksti
+        elements.questionText.textContent = question.question;
+
+        // Päivitä vastausnapit
+        elements.answerBtns.forEach((btn, index) => {
+            btn.textContent = question.answers[index] || '';
+            btn.className = 'answer-btn'; // Resetoi luokat
+            btn.disabled = false;
+        });
+
+        // Päivitä kysymyslaskuri
+        elements.currentQuestionNum.textContent = gameState.currentQuestionIndex + 1;
+
+        // Päivitä pistemäärä
+        elements.totalScoreDisplay.textContent = gameState.totalScore;
+
+        // Päivitä vaikeustaso-badge
+        updateDifficultyBadge(question.difficulty);
     }
 
-    .keyboard {
-        gap: 6px;
+    /**
+     * Päivittää vaikeustason ilmaisimen
+     * @param {string} difficulty - Vaikeustaso
+     */
+    function updateDifficultyBadge(difficulty) {
+        const badge = elements.difficultyBadge;
+        badge.className = 'difficulty-badge ' + difficulty;
+
+        const labels = {
+            easy: 'Lämmittely',
+            medium: 'Keskitaso',
+            hard: 'Haaste'
+        };
+
+        badge.textContent = labels[difficulty] || difficulty;
     }
 
-    .key {
-        min-width: 40px;
-        height: 48px;
-        font-size: 1rem;
+    // ============================================
+    // AJASTIN
+    // ============================================
+
+    /**
+     * Käynnistää kysymyksen ajastimen
+     */
+    function startTimer() {
+        // Tyhjennä mahdollinen aiempi ajastin
+        stopTimer();
+
+        // Alusta ajastin
+        gameState.timeRemaining = config.timePerQuestion;
+        gameState.questionStartTime = Date.now();
+
+        // Aloita intervalli
+        gameState.timerInterval = setInterval(updateTimer, 100);
+
+        // Päivitä heti
+        updateTimer();
     }
 
-    .key-wide {
-        min-width: 60px;
+    /**
+     * Päivittää ajastimen näkymän
+     */
+    function updateTimer() {
+        const elapsed = (Date.now() - gameState.questionStartTime) / 1000;
+        gameState.timeRemaining = Math.max(0, config.timePerQuestion - elapsed);
+
+        // Laske prosenttiosuus
+        const percentage = (gameState.timeRemaining / config.timePerQuestion) * 100;
+
+        // Päivitä palkki
+        elements.timerBar.style.width = `${percentage}%`;
+
+        // Päivitä teksti
+        elements.timerText.textContent = `${Math.ceil(gameState.timeRemaining)}s`;
+
+        // Värinämuutokset
+        elements.timerBar.classList.remove('warning', 'critical');
+        if (percentage <= 25) {
+            elements.timerBar.classList.add('critical');
+        } else if (percentage <= 50) {
+            elements.timerBar.classList.add('warning');
+        }
+
+        // Tarkista aika lopussa
+        if (gameState.timeRemaining <= 0) {
+            handleTimeout();
+        }
     }
 
-    .key-space {
-        max-width: 180px;
+    /**
+     * Pysäyttää ajastimen
+     */
+    function stopTimer() {
+        if (gameState.timerInterval) {
+            clearInterval(gameState.timerInterval);
+            gameState.timerInterval = null;
+        }
     }
-}
 
-/* Landscape orientation warning for portrait use */
-@media (orientation: portrait) and (max-height: 600px) {
-    #app-container::after {
-        content: "Käytä laitetta vaakasuunnassa paremman kokemuksen saavuttamiseksi";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
-        padding: 20px;
-        border-radius: 12px;
-        text-align: center;
-        font-size: 1rem;
-        z-index: 100;
-        white-space: nowrap;
-    }
-}
+    /**
+     * Käsittelee ajan lopussa
+     */
+    function handleTimeout() {
+        if (gameState.isAnswered) return;
 
-/* Prevent text selection and zoom on iOS */
-@media (hover: none) and (pointer: coarse) {
-    input, textarea, select {
-        font-size: 16px;
+        gameState.isAnswered = true;
+        stopTimer();
+
+        // Merkitse vastaus vääräksi
+        markAnswer(-1);
+
+        // Siirry seuraavaan kysymykseen
+        setTimeout(nextQuestion, config.transitionDelay);
     }
-    
-    .answer-btn,
-    .btn,
-    .key,
-    .input-trigger-btn {
-        cursor: pointer;
-        -webkit-tap-highlight-color: rgba(2, 132, 199, 0.3);
+
+    // ============================================
+    // VASTAUSTEN KÄSITTELY
+    // ============================================
+
+    /**
+     * Käsittelee pelaajan vastauksen
+     * @param {number} answerIndex - Vastausindeksi (0-3)
+     */
+    function handleAnswer(answerIndex) {
+        if (gameState.isAnswered) return;
+
+        gameState.isAnswered = true;
+        stopTimer();
+
+        const question = gameState.questions[gameState.currentQuestionIndex];
+        const isCorrect = answerIndex === question.correctIndex;
+
+        // Laske pisteet
+        const points = calculatePoints();
+        if (isCorrect) {
+            gameState.totalScore += points;
+        }
+
+        // Merkitse vastaus
+        markAnswer(answerIndex);
+
+        // Päivitä näyttö
+        elements.totalScoreDisplay.textContent = gameState.totalScore;
+
+        // Siirry seuraavaan
+        setTimeout(nextQuestion, config.transitionDelay);
     }
-}
+
+    /**
+     * Laskee pisteet nykyisestä kysymyksestä
+     * Pistemäärä per kysymys = jäljellä oleva aika × (400/15)
+     * Maksimi 400 pistettä = 15 kysymystä × 20 sekuntia × 1.33 pistettä/sekunti
+     * @returns {number} Saadut pisteet
+     */
+    function calculatePoints() {
+        // Yksinkertainen kaava: pisteet = jäljellä oleva aika sekunneissa
+        // 
+        // Tulokset:
+        // - 20s → 20 pistettä
+        // - 15s → 15 pistettä
+        // - 10s → 10 pistettä
+        // - 5s → 5 pistettä
+        // - 1s → 1 piste
+        // - 0s → 0 pistettä
+        // Yhteensä max 300 pistettä (20 × 15)
+        
+        return Math.round(gameState.timeRemaining);
+    }
+
+    /**
+     * Merkitsee vastauksen oikeaksi/vääräksi
+     * @param {number} selectedIndex - Valittu vastaus (-1 = ei vastausta)
+     */
+    function markAnswer(selectedIndex) {
+        const question = gameState.questions[gameState.currentQuestionIndex];
+
+        elements.answerBtns.forEach((btn, index) => {
+            btn.disabled = true;
+
+            if (index === question.correctIndex) {
+                btn.classList.add('correct');
+            } else if (index === selectedIndex && selectedIndex !== question.correctIndex) {
+                btn.classList.add('incorrect');
+            }
+        });
+    }
+
+    /**
+     * Siirtyy seuraavaan kysymykseen
+     */
+    function nextQuestion() {
+        gameState.currentQuestionIndex++;
+
+        if (gameState.currentQuestionIndex >= gameState.questions.length) {
+            // Peli päättynyt
+            endGame();
+        } else {
+            // Seuraava kysymys
+            displayQuestion();
+            startTimer();
+        }
+    }
+
+    // ============================================
+    // PELIN PÄÄTTYMINEN
+    // ============================================
+
+    /**
+     * Päättää pelin ja siirtyy tulossyöttöön
+     */
+    function endGame() {
+        stopTimer();
+
+        // Päivitä lopputulos
+        elements.finalScoreDisplay.textContent = gameState.totalScore;
+
+        // Tyhjennä syötekentät
+        elements.playerName.value = '';
+        elements.playerPhone.value = '';
+
+        // Siirry tulossyöttönäkymään
+        showScreen('results-input');
+
+        // Päivitä submit-napin tila
+        updateSubmitButton();
+    }
+
+    /**
+     * Päivittää submit-napin tilan
+     */
+    function updateSubmitButton() {
+        const name = elements.playerName.value.trim();
+        elements.submitScoreBtn.disabled = name.length === 0;
+    }
+
+    // ============================================
+    // TULOSTEN KÄSITTELY
+    // ============================================
+
+    /**
+     * Käsittelee tulosten lähetyksen
+     */
+    async function handleScoreSubmit() {
+        const name = elements.playerName.value.trim();
+        const phone = elements.playerPhone.value.trim();
+        const score = gameState.totalScore;
+
+        // Validoi nimi
+        if (!name) {
+            showNotification('Syötä nimesi', 'error');
+            return;
+        }
+
+        // Estä napin kaksoisklikkaus
+        elements.submitScoreBtn.disabled = true;
+        elements.submitScoreBtn.textContent = 'TALLENTAA...';
+
+        try {
+            // Tallenna Supabaseen
+            const result = await window.SupabaseAPI.saveScore({
+                name: name,
+                phone: phone || null,
+                score: score
+            });
+
+            if (result.success) {
+                // Hae ja näytä leaderboard
+                showLeaderboard();
+            } else {
+                showNotification(result.error || 'Tallennus epäonnistui', 'error');
+                elements.submitScoreBtn.disabled = false;
+                elements.submitScoreBtn.textContent = 'TALLENNA TULOS';
+            }
+
+        } catch (error) {
+            console.error('Tallennusvirhe:', error);
+            showNotification('Tallennus epäonnistui', 'error');
+            elements.submitScoreBtn.disabled = false;
+            elements.submitScoreBtn.textContent = 'TALLENNA TULOS';
+        }
+    }
+
+    /**
+     * Käsittelee "OHITA" napin painalluksen
+     * Siirtyy suoraan tulostaulukkoon tallentamatta tulosta
+     */
+    function handleSkipSubmit() {
+        console.log('Pelaaja ohitti tulosten tallennuksen');
+        
+        // Sulje virtuaalinäppäimistö jos se on auki
+        if (typeof window.VirtualKeyboard !== 'undefined') {
+            window.VirtualKeyboard.hideKeyboard();
+        }
+        
+        // Siirty suoraan tulostaulukkoon
+        showLeaderboard();
+    }
+
+    /**
+     * Näyttää tuloslistan
+     */
+    async function showLeaderboard() {
+        showScreen('leaderboard');
+
+        // Näytä latausindikaattori
+        elements.leaderboardBody.innerHTML = '';
+        elements.leaderboardLoading.classList.add('active');
+
+        try {
+            const result = await window.SupabaseAPI.getLeaderboard(5);
+
+            if (result.success) {
+                renderLeaderboard(result.data);
+            } else {
+                showNotification('Tuloslistaa ei voitu ladata', 'error');
+                elements.leaderboardBody.innerHTML = '<tr><td colspan="3" class="leaderboard-empty">Tuloslista ei ole käytettävissä</td></tr>';
+            }
+
+        } catch (error) {
+            console.error('Leaderboard-hakuvirhe:', error);
+            elements.leaderboardBody.innerHTML = '<tr><td colspan="3" class="leaderboard-empty">Virhe ladattaessa tuloksia</td></tr>';
+        } finally {
+            elements.leaderboardLoading.classList.remove('active');
+        }
+    }
+
+    /**
+     * Renderöi tuloslistan
+     * @param {Array} scores - Tulokset
+     */
+    function renderLeaderboard(scores) {
+        elements.leaderboardBody.innerHTML = '';
+
+        if (!scores || scores.length === 0) {
+            elements.leaderboardBody.innerHTML = '<tr><td colspan="3" class="leaderboard-empty">Ei vielä tuloksia</td></tr>';
+            return;
+        }
+
+        scores.forEach((entry, index) => {
+            const row = document.createElement('tr');
+            
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${escapeHtml(entry.player_name || entry.name || 'Nimetön')}</td>
+                <td>${entry.score}</td>
+            `;
+            
+            elements.leaderboardBody.appendChild(row);
+        });
+    }
+
+    // ============================================
+    // PELIN NOLLAUS
+    // ============================================
+
+    /**
+     * Nollaa pelin aloitustilaan
+     */
+    function resetGame() {
+        // Nollaa tila
+        gameState.questions = [];
+        gameState.currentQuestionIndex = 0;
+        gameState.totalScore = 0;
+        gameState.isAnswered = false;
+
+        // Tyhjennä ajastin
+        stopTimer();
+
+        // Siirry aloitunäkymään
+        showScreen('start');
+    }
+
+    // ============================================
+    // APUFUNKTIOT
+    // ============================================
+
+    /**
+     * Näyttää ilmoituksen käyttäjälle
+     * @param {string} message - Viesti
+     * @param {string} type - Tyyppi ('error', 'warning', 'info')
+     */
+    function showNotification(message, type = 'info') {
+        // Luo notification-elementti jos ei ole
+        let notification = document.getElementById('game-notification');
+        
+        if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'game-notification';
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 16px 24px;
+                border-radius: 12px;
+                font-weight: 600;
+                z-index: 2000;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                max-width: 80%;
+                text-align: center;
+            `;
+            document.body.appendChild(notification);
+        }
+
+        const colors = {
+            error: '#ef4444',
+            warning: '#f59e0b',
+            info: '#0284c7'
+        };
+
+        notification.style.backgroundColor = colors[type] || colors.info;
+        notification.style.color = 'white';
+        notification.textContent = message;
+        notification.style.opacity = '1';
+
+        // Piilota 3 sekunnin kuluttua
+        setTimeout(() => {
+            notification.style.opacity = '0';
+        }, 3000);
+    }
+
+    /**
+     * Erottaa HTML-merkit
+     * @param {string} text - Teksti
+     * @returns {string} Erotettu teksti
+     */
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    /**
+     * Vie notification-funktio globaaliin käyttöön
+     */
+    window.showGameNotification = showNotification;
+
+    // ============================================
+    // KÄYNNISTYS
+    // ============================================
+
+    // Käynnistä alustus kun DOM on valmis
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+
+})();
