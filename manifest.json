@@ -1,21 +1,17 @@
 {
     "name": "Kylmätekniikkapeli",
     "short_name": "Kylmäpeli",
+    "description": "Testaa tietosi kylmätekniikasta!",
     "start_url": "./index.html",
-    "display": "fullscreen",
-    "orientation": "landscape",
+    "display": "standalone",
     "background_color": "#0f172a",
     "theme_color": "#0284c7",
+    "orientation": "landscape",
     "icons": [
         {
-            "src": "icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png"
-        },
-        {
-            "src": "icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png"
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230284c7'/><text x='50' y='60' font-size='40' text-anchor='middle' fill='white'>❄️</text></svg>",
+            "sizes": "any",
+            "type": "image/svg+xml"
         }
     ]
 }
