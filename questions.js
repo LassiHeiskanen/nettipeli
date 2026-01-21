@@ -169,6 +169,17 @@ const hardQuestions = [
         explanation: "Optimaalinen alijäähdytys saavutetaan säätämällä TXV:n esijännitystä (MOP) ja varmistamalla anturin oikea sijoitus sekä lämpöyhteys."
     },
     {
+        question: "Testimielessä turhanpäiväinen kysymys?",
+        answers: [
+        "Tämä oli tärkeää",
+        "Ei oikeaa vastausta",
+        "Höpsislöpsis",
+        "Tämän pitäisi olla oikea valinta"
+        ],
+        correctIndex: 3,
+        explanation: "Optimaalinen alijäähdytys saavutetaan säätämällä TXV:n esijännitystä (MOP) ja varmistamalla anturin oikea sijoitus sekä lämpöyhteys."
+    },
+    {
         question: "Mikä on inversion lämpötilan merkitys CO2-kylmäjärjestelmissä?",
         answers: [
         "Se määrittää lämpötilan, jossa CO2:n höyrystymislämpö ylittää lauhtumislämmön",
