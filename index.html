@@ -8,12 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="manifest" href="manifest.json">
-    <!-- iOS-kioskimoodi -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Kylmätekniikkapeli">
-<link rel="apple-touch-icon" href="icon-192.png">
 </head>
 <body>
     <!-- Safety zone container - 70% of screen -->
@@ -145,76 +139,76 @@
     </div>
 
     <!-- Virtual Keyboard Overlay -->
-    <div id="keyboard-overlay" class="keyboard-overlay hidden">
+    <div id="keyboard-overlay" class="keyboard-overlay">
         <div id="keyboard-container" class="keyboard-container">
             <!-- Text Keyboard -->
-            <div id="text-keyboard" class="keyboard text-keyboard hidden">
+            <div id="text-keyboard" class="keyboard text-keyboard">
                 <div class="keyboard-row">
-                    <button type="button" class="key" data-key="q">q</button>
-                    <button type="button" class="key" data-key="w">w</button>
-                    <button type="button" class="key" data-key="e">e</button>
-                    <button type="button" class="key" data-key="r">r</button>
-                    <button type="button" class="key" data-key="t">t</button>
-                    <button type="button" class="key" data-key="y">y</button>
-                    <button type="button" class="key" data-key="u">u</button>
-                    <button type="button" class="key" data-key="i">i</button>
-                    <button type="button" class="key" data-key="o">o</button>
-                    <button type="button" class="key" data-key="p">p</button>
+                    <button type="button" class="key" data-key="q" data-mode="text">q</button>
+                    <button type="button" class="key" data-key="w" data-mode="text">w</button>
+                    <button type="button" class="key" data-key="e" data-mode="text">e</button>
+                    <button type="button" class="key" data-key="r" data-mode="text">r</button>
+                    <button type="button" class="key" data-key="t" data-mode="text">t</button>
+                    <button type="button" class="key" data-key="y" data-mode="text">y</button>
+                    <button type="button" class="key" data-key="u" data-mode="text">u</button>
+                    <button type="button" class="key" data-key="i" data-mode="text">i</button>
+                    <button type="button" class="key" data-key="o" data-mode="text">o</button>
+                    <button type="button" class="key" data-key="p" data-mode="text">p</button>
                     <button type="button" class="key key-wide key-backspace" data-key="backspace">⌫</button>
                 </div>
                 <div class="keyboard-row">
                     <div class="spacer-half"></div>
-                    <button type="button" class="key" data-key="a">a</button>
-                    <button type="button" class="key" data-key="s">s</button>
-                    <button type="button" class="key" data-key="d">d</button>
-                    <button type="button" class="key" data-key="f">f</button>
-                    <button type="button" class="key" data-key="g">g</button>
-                    <button type="button" class="key" data-key="h">h</button>
-                    <button type="button" class="key" data-key="j">j</button>
-                    <button type="button" class="key" data-key="k">k</button>
-                    <button type="button" class="key" data-key="l">l</button>
+                    <button type="button" class="key" data-key="a" data-mode="text">a</button>
+                    <button type="button" class="key" data-key="s" data-mode="text">s</button>
+                    <button type="button" class="key" data-key="d" data-mode="text">d</button>
+                    <button type="button" class="key" data-key="f" data-mode="text">f</button>
+                    <button type="button" class="key" data-key="g" data-mode="text">g</button>
+                    <button type="button" class="key" data-key="h" data-mode="text">h</button>
+                    <button type="button" class="key" data-key="j" data-mode="text">j</button>
+                    <button type="button" class="key" data-key="k" data-mode="text">k</button>
+                    <button type="button" class="key" data-key="l" data-mode="text">l</button>
                     <div class="spacer-half"></div>
                 </div>
                 <div class="keyboard-row">
                     <button type="button" class="key key-wide" data-key="caps">⇧</button>
-                    <button type="button" class="key" data-key="z">z</button>
-                    <button type="button" class="key" data-key="x">x</button>
-                    <button type="button" class="key" data-key="c">c</button>
-                    <button type="button" class="key" data-key="v">v</button>
-                    <button type="button" class="key" data-key="b">b</button>
-                    <button type="button" class="key" data-key="n">n</button>
-                    <button type="button" class="key" data-key="m">m</button>
+                    <button type="button" class="key" data-key="z" data-mode="text">z</button>
+                    <button type="button" class="key" data-key="x" data-mode="text">x</button>
+                    <button type="button" class="key" data-key="c" data-mode="text">c</button>
+                    <button type="button" class="key" data-key="v" data-mode="text">v</button>
+                    <button type="button" class="key" data-key="b" data-mode="text">b</button>
+                    <button type="button" class="key" data-key="n" data-mode="text">n</button>
+                    <button type="button" class="key" data-key="m" data-mode="text">m</button>
                     <button type="button" class="key key-wide" data-key="backspace">⌫</button>
                 </div>
                 <div class="keyboard-row">
-                    <button type="button" class="key key-special" data-key="ä">ä</button>
-                    <button type="button" class="key key-special" data-key="ö">ö</button>
-                    <button type="button" class="key key-special" data-key="å">å</button>
+                    <button type="button" class="key key-special" data-key="ä" data-mode="text">ä</button>
+                    <button type="button" class="key key-special" data-key="ö" data-mode="text">ö</button>
+                    <button type="button" class="key key-special" data-key="å" data-mode="text">å</button>
                     <button type="button" class="key key-space" data-key="space">Välilyönti</button>
                     <button type="button" class="key key-action key-enter" data-key="enter">ENTER</button>
                 </div>
             </div>
 
             <!-- Number Keyboard -->
-            <div id="number-keyboard" class="keyboard number-keyboard hidden">
+            <div id="number-keyboard" class="keyboard number-keyboard">
                 <div class="keyboard-row">
-                    <button type="button" class="key" data-key="1">1</button>
-                    <button type="button" class="key" data-key="2">2</button>
-                    <button type="button" class="key" data-key="3">3</button>
+                    <button type="button" class="key" data-key="1" data-mode="number">1</button>
+                    <button type="button" class="key" data-key="2" data-mode="number">2</button>
+                    <button type="button" class="key" data-key="3" data-mode="number">3</button>
                 </div>
                 <div class="keyboard-row">
-                    <button type="button" class="key" data-key="4">4</button>
-                    <button type="button" class="key" data-key="5">5</button>
-                    <button type="button" class="key" data-key="6">6</button>
+                    <button type="button" class="key" data-key="4" data-mode="number">4</button>
+                    <button type="button" class="key" data-key="5" data-mode="number">5</button>
+                    <button type="button" class="key" data-key="6" data-mode="number">6</button>
                 </div>
                 <div class="keyboard-row">
-                    <button type="button" class="key" data-key="7">7</button>
-                    <button type="button" class="key" data-key="8">8</button>
-                    <button type="button" class="key" data-key="9">9</button>
+                    <button type="button" class="key" data-key="7" data-mode="number">7</button>
+                    <button type="button" class="key" data-key="8" data-mode="number">8</button>
+                    <button type="button" class="key" data-key="9" data-mode="number">9</button>
                 </div>
                 <div class="keyboard-row">
                     <button type="button" class="key key-action" data-key="clear">TYHJENNÄ</button>
-                    <button type="button" class="key" data-key="0">0</button>
+                    <button type="button" class="key" data-key="0" data-mode="number">0</button>
                     <button type="button" class="key key-action key-enter" data-key="enter">ENTER</button>
                 </div>
             </div>
