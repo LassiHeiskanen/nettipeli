@@ -9,11 +9,15 @@
     touch-action: manipulation;
 }
 
+/* Apuluokat */
+.hidden {
+    display: none !important;
+}
+
 html, body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    overscroll-behavior: none;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: #0f172a;
     color: #334155;
@@ -52,9 +56,6 @@ html, body {
 /* ============================================
    SCREEN MANAGEMENT
    ============================================ */
-.hidden {
-    display: none !important;
-}
 
 .screen {
     position: absolute;
@@ -591,7 +592,7 @@ html, body {
 }
 
 /* ============================================
-   VIRTUAL KEYBOARD
+   VIRTUAL KEYBOARD - Pienempi ja toimiva
    ============================================ */
 
 .keyboard-overlay {
@@ -600,125 +601,98 @@ html, body {
     left: 0;
     width: 100%;
     background-color: rgba(15, 23, 42, 0.98);
-    padding: 12px;
-    transform: translateY(100%);
-    transition: transform 0.3s ease;
+    padding: 8px;
+    padding-bottom: 20px;
     z-index: 1000;
-    visibility: hidden;
-    opacity: 0;
+    display: none;
 }
 
 .keyboard-overlay.visible {
-    transform: translateY(0);
-    visibility: visible;
-    opacity: 1;
+    display: block;
 }
 
 .keyboard-container {
-    max-width: 600px;
+    max-width: 500px;
     margin: 0 auto;
 }
 
 .keyboard {
-    display: flex;
+    display: none;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .keyboard-row {
     display: flex;
     justify-content: center;
-    gap: 4px;
-}
-
-.spacer-half {
-    width: 18px;
+    gap: 3px;
 }
 
 .key {
-    min-width: 36px;
-    height: 44px;
-    padding: 0 8px;
-    font-size: 1rem;
-    font-weight: 500;
+    min-width: 28px;
+    height: 36px;
+    padding: 0 6px;
+    font-size: 0.9rem;
     background: linear-gradient(145deg, #334155 0%, #1e293b 100%);
     border: none;
-    border-radius: 6px;
+    border-radius: 5px;
     color: #f8fafc;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.15s ease;
-    touch-action: manipulation;
-}
-
-.key:hover {
-    background: linear-gradient(145deg, #475569 0%, #334155 100%);
+    transition: all 0.1s ease;
 }
 
 .key:active {
-    transform: scale(0.95);
     background: #0284c7;
+    transform: scale(0.95);
 }
 
 .key-wide {
-    min-width: 50px;
+    min-width: 40px;
 }
 
 .key-special {
-    min-width: 42px;
-    height: 44px;
-    font-size: 0.9rem;
+    min-width: 32px;
+    height: 36px;
+    font-size: 0.85rem;
 }
 
 .key-space {
     flex: 1;
-    max-width: 180px;
-    height: 44px;
+    max-width: 120px;
+    height: 36px;
+    font-size: 0.8rem;
 }
 
 .key-action {
     background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
     font-weight: 600;
-    height: 44px;
-}
-
-.key-action:active {
-    background: #0369a1;
+    height: 36px;
 }
 
 .key-enter {
     background: linear-gradient(145deg, #22c55e 0%, #16a34a 100%);
-    height: 44px;
+    height: 36px;
 }
 
-.key-enter:active {
-    background: #16a34a;
+.spacer-half {
+    width: 14px;
 }
 
-/* Number Keyboard - pienempi */
+/* Number Keyboard */
 .number-keyboard .keyboard-row {
-    gap: 8px;
+    gap: 6px;
 }
 
 .number-keyboard .key {
     flex: 1;
-    max-width: none;
-    height: 48px;
-    font-size: 1.25rem;
+    height: 40px;
+    font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 8px;
+    border-radius: 6px;
 }
-}
-
-.key-special {
-    min-width: 60px;
-    font-size: 1.125rem;
-}
-
-.key-space {
-    flex: 1;
     max-width: 280px;
 }
 
