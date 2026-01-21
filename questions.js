@@ -344,6 +344,17 @@ const hardQuestions = [
         ],
         correctIndex: 0,
         explanation: "Inversion lämpötila (~31°C CO2:lle) on kriittinen piste - sen yläpuolella lämmönsiirto kääntyy, mikä vaatii erityisjärjestelyjä korkeissa ulkolämpötiloissa."
+    },
+      {
+        question: "testikysymys, tuleeko tämä lainkaan?",
+        answers: [
+        "Ei näy",
+        "No näkyypäs, kunhan huijasin",
+        "Puijaaminen on metkaa",
+        "joopajoo"
+        ],
+        correctIndex: 3,
+        explanation: "Inversion lämpötila (~31°C CO2:lle) on kriittinen piste - sen yläpuolella lämmönsiirto kääntyy, mikä vaatii erityisjärjestelyjä korkeissa ulkolämpötiloissa."
     }
 ];
 
