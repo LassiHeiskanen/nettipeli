@@ -529,7 +529,8 @@ html, body {
     display: flex;
     flex-direction: column;
     margin-bottom: 32px;
-    overflow: hidden;
+    overflow: auto;
+    max-height: calc(100vh - 280px);
 }
 
 .leaderboard-table {
