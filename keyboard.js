@@ -1,6 +1,6 @@
 /**
  * Kylmätekniikkapeli - Virtuaalinäppäimistö
- * Yksinkertainen ja toimiva versio
+ * Toimiva versio
  */
 
 (function() {
@@ -51,9 +51,6 @@
 
         // Sulje näppäimistö kun klikataan overlayta
         if (elements.overlay) {
-            elements.overlay.addEventListener('click', handleOverlayClick, false);
-            
-            // Näppäimistön näppäimet - event delegation
             elements.overlay.addEventListener('click', function(e) {
                 var keyBtn = e.target.closest('.key');
                 if (keyBtn) {
@@ -62,7 +59,10 @@
                     var key = keyBtn.getAttribute('data-key');
                     var mode = keyBtn.getAttribute('data-mode');
                     handleKeyPress(key, mode);
+                    return;
                 }
+                // Muu klikkaus sulkee
+                handleOverlayClick(e);
             }, false);
         }
 
@@ -121,8 +121,8 @@
             elements.textKeyboard.style.display = 'flex';
         }
 
-        // Näytä overlay
-        elements.overlay.style.display = 'block';
+        // Poista hidden-luokka ja näytä overlay
+        elements.overlay.classList.remove('hidden');
         elements.overlay.classList.add('visible');
         keyboardState.isVisible = true;
 
@@ -132,16 +132,15 @@
     function closeKeyboard() {
         if (!elements.overlay) return;
 
-        elements.overlay.classList.remove('visible');
         keyboardState.isVisible = false;
-        keyboardState.activeInput = null;
 
-        // Piilota overlay animaation jälkeen
-        setTimeout(function() {
-            if (!keyboardState.isVisible) {
-                elements.overlay.style.display = 'none';
-            }
-        }, 300);
+        // Piilota molemmat näppäimistöt
+        elements.textKeyboard.style.display = 'none';
+        elements.numberKeyboard.style.display = 'none';
+
+        // Lisää hidden-luokka takaisin
+        elements.overlay.classList.remove('visible');
+        elements.overlay.classList.add('hidden');
 
         console.log('Virtuaalinäppäimistö: Suljettu');
     }
