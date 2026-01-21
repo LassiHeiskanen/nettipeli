@@ -683,46 +683,15 @@ html, body {
 
 /* Number Keyboard */
 .number-keyboard .keyboard-row {
-    gap: 6px;
+    gap: 8px;
 }
 
 .number-keyboard .key {
     flex: 1;
-    height: 40px;
-    font-size: 1.1rem;
+    height: 44px;
+    font-size: 1.2rem;
     font-weight: 600;
-    border-radius: 6px;
-}
-    max-width: 280px;
-}
-
-.key-action {
-    background: linear-gradient(145deg, #0284c7 0%, #0369a1 100%);
-    font-weight: 600;
-}
-
-.key-action:active {
-    background: #0369a1;
-}
-
-.key-enter {
-    background: linear-gradient(145deg, #22c55e 0%, #16a34a 100%);
-}
-
-.key-enter:active {
-    background: #16a34a;
-}
-
-/* Number Keyboard */
-.number-keyboard .keyboard-row {
-    gap: 12px;
-}
-
-.number-keyboard .key {
-    flex: 1;
-    height: 64px;
-    font-size: 1.5rem;
-    font-weight: 600;
+    border-radius: 8px;
 }
 
 /* ============================================
