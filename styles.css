@@ -597,7 +597,7 @@ html, body {
 
 .keyboard-overlay {
     position: fixed;
-    bottom: 0;
+    bottom: 80px;
     left: 0;
     width: 100%;
     background-color: rgba(15, 23, 42, 0.98);
@@ -605,6 +605,7 @@ html, body {
     padding-bottom: 20px;
     z-index: 1000;
     display: none;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .keyboard-overlay.visible {
