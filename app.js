@@ -182,24 +182,42 @@
      * Aloittaa uuden pelin
      */
     function startGame() {
-        // Alusta pelin tila
-        gameState.questions = [];
-        gameState.currentQuestionIndex = 0;
-        gameState.totalScore = 0;
-        gameState.isAnswered = false;
-        gameState.timerInterval = null;
+        console.log('startGame kutsuttu');
+        
+        // Turvatarkistus: älä käynnistä jos kysymyksiä ei ole valittu
+        if (gameState.questions.length === 0) {
+            console.log('Ei kysymyksiä, valitaan nyt...');
+            
+            // Alusta pelin tila
+            gameState.questions = [];
+            gameState.currentQuestionIndex = 0;
+            gameState.totalScore = 0;
+            gameState.isAnswered = false;
+            gameState.timerInterval = null;
 
-        // Valitse kysymykset kysymyspankeista
-        selectQuestions();
+            // Valitse kysymykset kysymyspankeista
+            selectQuestions();
 
-        // Siirtymään quiz-näkymään
-        showScreen('quiz');
+            // Varmista että kysymyksiä on valittu
+            if (gameState.questions.length === 0) {
+                console.error('Kysymyksiä ei voitu valita!');
+                return;
+            }
 
-        // Näytä ensimmäinen kysymys
-        displayQuestion();
+            // Siirtymään quiz-näkymään
+            showScreen('quiz');
 
-        // Aloita ajastin pienen viiveen jälkeen (varmistaa näkymän päivityksen)
-        setTimeout(startTimer, 50);
+            // Näytä ensimmäinen kysymys
+            displayQuestion();
+
+            // Aloita ajastin pienen viiveen jälkeen (varmistaa näkymän päivityksen)
+            setTimeout(startTimer, 50);
+        } else {
+            // Kysymyksiä on jo valittu - tämä voi tarkoittaa, että
+            // käyttäjä klikkasi vahingossa tai jotain meni pieleen
+            console.log('Kysymyksiä on jo valittu, näytetään aloitussivu');
+            showScreen('start');
+        }
     }
 
     /**
@@ -524,7 +542,7 @@
 
         // Estä napin kaksoisklikkaus
         elements.submitScoreBtn.disabled = true;
-        elements.submitScoreBtn.textContent = 'TALLENTAA...';
+        elements.submitScoreBtn.textContent = 'TALLENNA';
 
         try {
             // Tallenna Supabaseen
@@ -628,17 +646,23 @@
      * Nollaa pelin aloitustilaan
      */
     function resetGame() {
+        console.log('resetGame kutsuttu');
+        
         // Nollaa tila
         gameState.questions = [];
         gameState.currentQuestionIndex = 0;
         gameState.totalScore = 0;
         gameState.isAnswered = false;
+        gameState.timerInterval = null;
 
         // Tyhjennä ajastin
         stopTimer();
 
         // Siirry aloitunäkymään
         showScreen('start');
+        
+        console.log('Näyttö vaihdettu: start');
+    }
     }
 
     // ============================================
