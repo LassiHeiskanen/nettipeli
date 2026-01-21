@@ -206,15 +206,24 @@
      * Valitsee kysymykset kysymyspankeista
      */
     function selectQuestions() {
+        // Tarkista onko kysymyspankit ladattu
+        console.log('Tarkistetaan kysymyspankkeja...');
+        console.log('window.questionBanks:', typeof window.questionBanks);
+        
         const banks = window.questionBanks;
         if (!banks) {
-            console.error('Kysymyspankkeja ei löydy!');
+            console.error('Kysymyspankkeja ei löydy! Tarkista, että questions.js on ladattu.');
+            alert('Virhe: Kysymyksiä ei löydy. Lataa sivu uudelleen.');
             return;
         }
+
+        console.log('Kysymyspankit löytyvät:', Object.keys(banks));
 
         // Sekoita ja valitse 5 kysymystä jokaisesta pankista
         gameState.difficultyOrder.forEach(difficulty => {
             const bank = banks[difficulty];
+            console.log(`Haetaan ${difficulty} kysymyksiä:`, bank ? bank.length + ' kpl' : 'Ei löydy');
+            
             if (bank && bank.length > 0) {
                 const selected = shuffleArray(bank).slice(0, config.questionsPerBank);
                 gameState.questions.push(...selected.map(q => ({
@@ -225,6 +234,12 @@
         });
 
         console.log(`Valittu ${gameState.questions.length} kysymystä`);
+        
+        // Tarkista onko kysymyksiä valittu
+        if (gameState.questions.length === 0) {
+            console.error('Yhtään kysymystä ei valittu!');
+            alert('Virhe: Kysymyksiä ei voitu ladata.');
+        }
     }
 
     /**
