@@ -63,6 +63,172 @@ const easyQuestions = [
         correctIndex: 0,
         explanation: "Kylmäkoneen peruskomponentit ovat kompressori, lauhdutin, paisuntaventtiili ja haihtimen - nämä muodostavat kylmäainekierron."
     }
+    {
+    question: "Mikä kylmäkoneen osa vastaa kylmäaineen höyrystymisestä ja lämmön sitomisesta?",
+    answers: [
+        "Lauhdutin",
+        "Haihdutin",
+        "Kompressori",
+        "Paisuntaventtiili"
+    ],
+    correctIndex: 1,
+    explanation: "Haihduttimessa kylmäaine höyrystyy ja sitoo lämpöä ympäristöstään."
+},
+{
+    question: "Mikä komponentti alentaa kylmäaineen painetta ennen haihdutinta?",
+    answers: [
+        "Kompressori",
+        "Lauhdutin",
+        "Paisuntaventtiili",
+        "Kuivain"
+    ],
+    correctIndex: 2,
+    explanation: "Paisuntaventtiili alentaa kylmäaineen painetta ja säätelee virtausta haihduttimeen."
+},
+{
+    question: "Missä kylmäkoneen osassa kylmäaine luovuttaa lämpöä ympäristöön?",
+    answers: [
+        "Haihdutin",
+        "Kompressori",
+        "Kuivain",
+        "Lauhdutin"
+    ],
+    correctIndex: 3,
+    explanation: "Lauhduttimessa kylmäaine luovuttaa lämpöä ja tiivistyy kaasusta nesteeksi."
+},
+{
+    question: "Mikä seuraavista EI kuulu kylmäkoneen peruskiertoon?",
+    answers: [
+        "Kompressori",
+        "Haihdutin",
+        "Lauhdutin",
+        "Puhallinmoottori"
+    ],
+    correctIndex: 3,
+    explanation: "Puhallinmoottori tukee toimintaa, mutta ei ole osa kylmäaineen peruskiertoa."
+},
+{
+    question: "Mikä on kylmäaineen olomuoto haihduttimesta poistuttaessa?",
+    answers: [
+        "Kaasu",
+        "Neste",
+        "Sekoitus",
+        "Kiinteä"
+    ],
+    correctIndex: 0,
+    explanation: "Haihduttimesta poistuva kylmäaine on kaasumaisessa olomuodossa."
+},
+{
+    question: "Mikä suure kuvaa kylmäaineen paine- ja lämpötilasuhdetta?",
+    answers: [
+        "Virta",
+        "Entalpia",
+        "Jännite",
+        "Teho"
+    ],
+    correctIndex: 1,
+    explanation: "Entalpia kuvaa kylmäaineen energiasisältöä eri olosuhteissa."
+},
+{
+    question: "Mikä kylmäkoneen osa suojaa järjestelmää kosteudelta ja epäpuhtauksilta?",
+    answers: [
+        "Kuivain",
+        "Haihdutin",
+        "Kompressori",
+        "Lauhdutin"
+    ],
+    correctIndex: 0,
+    explanation: "Kuivain poistaa kosteutta ja epäpuhtauksia kylmäaineesta."
+},
+{
+    question: "Mitä tapahtuu kylmäaineen lämpötilalle paineen noustessa kompressorissa?",
+    answers: [
+        "Se laskee",
+        "Se pysyy samana",
+        "Se nousee",
+        "Se jäätyy"
+    ],
+    correctIndex: 2,
+    explanation: "Kompressiossa paineen nousu aiheuttaa myös kylmäaineen lämpötilan nousun."
+},
+{
+    question: "Mikä on kylmäkoneen tehtävä yksinkertaistettuna?",
+    answers: [
+        "Tuottaa kylmää",
+        "Siirtää lämpöä",
+        "Poistaa kosteutta",
+        "Tuottaa sähköä"
+    ],
+    correctIndex: 1,
+    explanation: "Kylmäkone ei tuota kylmää, vaan siirtää lämpöä paikasta toiseen."
+},
+{
+    question: "Mikä tekijä vaikuttaa eniten kylmäkoneen hyötysuhteeseen?",
+    answers: [
+        "Putkien väri",
+        "Kylmäaineen määrä",
+        "Lämpötilaero",
+        "Sähkön hinta"
+    ],
+    correctIndex: 2,
+    explanation: "Mitä pienempi lämpötilaero, sitä parempi hyötysuhde."
+},
+{
+    question: "Mikä mittari kertoo kylmäaineen paineen?",
+    answers: [
+        "Lämpömittari",
+        "Painemittari",
+        "Virtausmittari",
+        "Tehomittari"
+    ],
+    correctIndex: 1,
+    explanation: "Painemittarilla mitataan kylmäaineen painetta järjestelmässä."
+},
+{
+    question: "Mitä tarkoittaa ylikuumeneminen kylmätekniikassa?",
+    answers: [
+        "Kompressorin ylikuormaa",
+        "Haihduttimen jäätymistä",
+        "Kylmäaineen lämpötilaa yli kiehumispisteen",
+        "Lauhduttimen tukkeutumista"
+    ],
+    correctIndex: 2,
+    explanation: "Ylikuumeneminen tarkoittaa, että kylmäaineen lämpötila on yli sen kiehumispisteen."
+},
+{
+    question: "Mikä kylmäaineen ominaisuus on ympäristön kannalta keskeinen?",
+    answers: [
+        "Väri",
+        "Haju",
+        "GWP-arvo",
+        "Tiheys"
+    ],
+    correctIndex: 2,
+    explanation: "GWP-arvo kertoo kylmäaineen ilmastonlämpenemispotentiaalin."
+},
+{
+    question: "Mikä laite pysäyttää kylmäkoneen liian korkeassa paineessa?",
+    answers: [
+        "Termostaatti",
+        "Sulake",
+        "Korkeapainekytkin",
+        "Ajastin"
+    ],
+    correctIndex: 2,
+    explanation: "Korkeapainekytkin suojaa järjestelmää vaarallisen korkealta paineelta."
+},
+{
+    question: "Mikä seuraavista on tyypillinen kylmäkoneen käyttö­kohde?",
+    answers: [
+        "Hitsauslaite",
+        "Jääkaappi",
+        "Sähkömoottori",
+        "Valaisin"
+    ],
+    correctIndex: 1,
+    explanation: "Jääkaappi on yksi yleisimmistä kylmäkoneen sovelluksista."
+}
+
 ];
 
 const mediumQuestions = [
