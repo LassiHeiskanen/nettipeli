@@ -51,6 +51,9 @@ html, body {
 /* ============================================
    SCREEN MANAGEMENT
    ============================================ */
+.hidden {
+    display: none !important;
+}
 
 .screen {
     position: absolute;
