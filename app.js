@@ -187,6 +187,7 @@
         gameState.currentQuestionIndex = 0;
         gameState.totalScore = 0;
         gameState.isAnswered = false;
+        gameState.timerInterval = null;
 
         // Valitse kysymykset kysymyspankeista
         selectQuestions();
@@ -197,8 +198,8 @@
         // Näytä ensimmäinen kysymys
         displayQuestion();
 
-        // Aloita ajastin
-        startTimer();
+        // Aloita ajastin pienen viiveen jälkeen (varmistaa näkymän päivityksen)
+        setTimeout(startTimer, 50);
     }
 
     /**
