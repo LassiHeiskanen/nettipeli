@@ -663,7 +663,6 @@
         
         console.log('Näyttö vaihdettu: start');
     }
-    }
 
     // ============================================
     // APUFUNKTIOT
