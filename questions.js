@@ -27,7 +27,7 @@ const easyQuestions = [
             "Se puhdistaa kylmäaineen epäpuhtauksista",
             "Se säätelee kylmäaineen virtausta"
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation: "Haihdutin vastaanottaa lämpöä ympäristöstään ja haihduttaa kylmäaineen, jolloin se jäähdyttää ympäröivää tilaa."
     },
     {
@@ -38,7 +38,7 @@ const easyQuestions = [
             "R-22",
             "R-410A"
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation: "R-134a (tetrafluoretaani) on yleisin kylmäaine nykyaikaisissa kotitalousjääkaapeissa sen ympäristöystävällisyyden vuoksi."
     },
     {
@@ -49,7 +49,7 @@ const easyQuestions = [
             "Kompressorin Paine",
             "Kylmäaineen Olomuoto"
         ],
-        correctIndex: 0,
+        correctIndex: 3,
         explanation: "COP (Coefficient of Performance) mittaa kylmäkoneen tehokkuutta - mitä korkeampi COP, sitä energiatehokkaampi laite."
     },
     {
@@ -60,175 +60,9 @@ const easyQuestions = [
             "Vain kompressori ja lauhdutin",
             "Vain haihtimen ja paisuntaventtiili"
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation: "Kylmäkoneen peruskomponentit ovat kompressori, lauhdutin, paisuntaventtiili ja haihtimen - nämä muodostavat kylmäainekierron."
     }
-    {
-    question: "Mikä kylmäkoneen osa vastaa kylmäaineen höyrystymisestä ja lämmön sitomisesta?",
-    answers: [
-        "Lauhdutin",
-        "Haihdutin",
-        "Kompressori",
-        "Paisuntaventtiili"
-    ],
-    correctIndex: 1,
-    explanation: "Haihduttimessa kylmäaine höyrystyy ja sitoo lämpöä ympäristöstään."
-},
-{
-    question: "Mikä komponentti alentaa kylmäaineen painetta ennen haihdutinta?",
-    answers: [
-        "Kompressori",
-        "Lauhdutin",
-        "Paisuntaventtiili",
-        "Kuivain"
-    ],
-    correctIndex: 2,
-    explanation: "Paisuntaventtiili alentaa kylmäaineen painetta ja säätelee virtausta haihduttimeen."
-},
-{
-    question: "Missä kylmäkoneen osassa kylmäaine luovuttaa lämpöä ympäristöön?",
-    answers: [
-        "Haihdutin",
-        "Kompressori",
-        "Kuivain",
-        "Lauhdutin"
-    ],
-    correctIndex: 3,
-    explanation: "Lauhduttimessa kylmäaine luovuttaa lämpöä ja tiivistyy kaasusta nesteeksi."
-},
-{
-    question: "Mikä seuraavista EI kuulu kylmäkoneen peruskiertoon?",
-    answers: [
-        "Kompressori",
-        "Haihdutin",
-        "Lauhdutin",
-        "Puhallinmoottori"
-    ],
-    correctIndex: 3,
-    explanation: "Puhallinmoottori tukee toimintaa, mutta ei ole osa kylmäaineen peruskiertoa."
-},
-{
-    question: "Mikä on kylmäaineen olomuoto haihduttimesta poistuttaessa?",
-    answers: [
-        "Kaasu",
-        "Neste",
-        "Sekoitus",
-        "Kiinteä"
-    ],
-    correctIndex: 0,
-    explanation: "Haihduttimesta poistuva kylmäaine on kaasumaisessa olomuodossa."
-},
-{
-    question: "Mikä suure kuvaa kylmäaineen paine- ja lämpötilasuhdetta?",
-    answers: [
-        "Virta",
-        "Entalpia",
-        "Jännite",
-        "Teho"
-    ],
-    correctIndex: 1,
-    explanation: "Entalpia kuvaa kylmäaineen energiasisältöä eri olosuhteissa."
-},
-{
-    question: "Mikä kylmäkoneen osa suojaa järjestelmää kosteudelta ja epäpuhtauksilta?",
-    answers: [
-        "Kuivain",
-        "Haihdutin",
-        "Kompressori",
-        "Lauhdutin"
-    ],
-    correctIndex: 0,
-    explanation: "Kuivain poistaa kosteutta ja epäpuhtauksia kylmäaineesta."
-},
-{
-    question: "Mitä tapahtuu kylmäaineen lämpötilalle paineen noustessa kompressorissa?",
-    answers: [
-        "Se laskee",
-        "Se pysyy samana",
-        "Se nousee",
-        "Se jäätyy"
-    ],
-    correctIndex: 2,
-    explanation: "Kompressiossa paineen nousu aiheuttaa myös kylmäaineen lämpötilan nousun."
-},
-{
-    question: "Mikä on kylmäkoneen tehtävä yksinkertaistettuna?",
-    answers: [
-        "Tuottaa kylmää",
-        "Siirtää lämpöä",
-        "Poistaa kosteutta",
-        "Tuottaa sähköä"
-    ],
-    correctIndex: 1,
-    explanation: "Kylmäkone ei tuota kylmää, vaan siirtää lämpöä paikasta toiseen."
-},
-{
-    question: "Mikä tekijä vaikuttaa eniten kylmäkoneen hyötysuhteeseen?",
-    answers: [
-        "Putkien väri",
-        "Kylmäaineen määrä",
-        "Lämpötilaero",
-        "Sähkön hinta"
-    ],
-    correctIndex: 2,
-    explanation: "Mitä pienempi lämpötilaero, sitä parempi hyötysuhde."
-},
-{
-    question: "Mikä mittari kertoo kylmäaineen paineen?",
-    answers: [
-        "Lämpömittari",
-        "Painemittari",
-        "Virtausmittari",
-        "Tehomittari"
-    ],
-    correctIndex: 1,
-    explanation: "Painemittarilla mitataan kylmäaineen painetta järjestelmässä."
-},
-{
-    question: "Mitä tarkoittaa ylikuumeneminen kylmätekniikassa?",
-    answers: [
-        "Kompressorin ylikuormaa",
-        "Haihduttimen jäätymistä",
-        "Kylmäaineen lämpötilaa yli kiehumispisteen",
-        "Lauhduttimen tukkeutumista"
-    ],
-    correctIndex: 2,
-    explanation: "Ylikuumeneminen tarkoittaa, että kylmäaineen lämpötila on yli sen kiehumispisteen."
-},
-{
-    question: "Mikä kylmäaineen ominaisuus on ympäristön kannalta keskeinen?",
-    answers: [
-        "Väri",
-        "Haju",
-        "GWP-arvo",
-        "Tiheys"
-    ],
-    correctIndex: 2,
-    explanation: "GWP-arvo kertoo kylmäaineen ilmastonlämpenemispotentiaalin."
-},
-{
-    question: "Mikä laite pysäyttää kylmäkoneen liian korkeassa paineessa?",
-    answers: [
-        "Termostaatti",
-        "Sulake",
-        "Korkeapainekytkin",
-        "Ajastin"
-    ],
-    correctIndex: 2,
-    explanation: "Korkeapainekytkin suojaa järjestelmää vaarallisen korkealta paineelta."
-},
-{
-    question: "Mikä seuraavista on tyypillinen kylmäkoneen käyttö­kohde?",
-    answers: [
-        "Hitsauslaite",
-        "Jääkaappi",
-        "Sähkömoottori",
-        "Valaisin"
-    ],
-    correctIndex: 1,
-    explanation: "Jääkaappi on yksi yleisimmistä kylmäkoneen sovelluksista."
-}
-
 ];
 
 const mediumQuestions = [
@@ -240,7 +74,7 @@ const mediumQuestions = [
         "Jotta paisuntaventtiili avautuu",
         "Jotta haihtimen jäähdytysteho kasvaa"
         ],
-        correctIndex: 0,
+        correctIndex: 1,
         explanation: "Korkeapaineinen kylmäaine kondensoituu lauhduttimessa korkeammassa lämpötilassa, mikä mahdollistaa lämmön siirtymisen ympäristöön."
     },
     {
@@ -262,7 +96,7 @@ const mediumQuestions = [
         "Haihduttimen jäätyminen",
         "Kylmäkoneen jäähdytys korkeassa ulkolämpötilassa"
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation: "Ylijäähdytys tarkoittaa kylmäaineen jäähdyttämistä alle sen kyllästyslämpötilan, mikä parantaa järjestelmän tehokkuutta."
     },
     {
@@ -273,7 +107,7 @@ const mediumQuestions = [
         "Kompressorin teho / Haihduttimen teho",
         "Haihduttimen lämpötila / Lauhduttimen lämpötila"
         ],
-        correctIndex: 0,
+        correctIndex: 3,
         explanation: "EER (Energy Efficiency Ratio) lasketaan jakamalla jäähdytysteho tarvittavalla sähköteholla - mitä korkeampi, sitä tehokkaampi."
     },
     {
@@ -284,7 +118,7 @@ const mediumQuestions = [
         "Puhdistamaan kylmäainepiiriä",
         "Vähentämään järjestelmän melua"
         ],
-        correctIndex: 0,
+        correctIndex: 3,
         explanation: "Injektointi (suihkutus) jäähdyttää kompressorin puristuskammiota, vähentäen puristuslämpöä ja pidentäen kompressorin käyttöikää."
     }
 ];
@@ -320,7 +154,7 @@ const hardQuestions = [
         "Suoraruiskutus on tehottomampi menetelmä",
         "Paluukaasujäähdytys vaatii aina kaksivaiheisen paisuntaventtiilin"
         ],
-        correctIndex: 0,
+        correctIndex: 2,
         explanation: "Suoraruiskutuksessa (DX) kylmäaine höyrystyy haihtimessa. Gas cooler -järjestelmissä ylikuumentunut kaasu jäähdytetään nestemäisessä tilassa ennen paisuntaa."
     },
     {
@@ -342,18 +176,7 @@ const hardQuestions = [
         "Se on optimaalinen käyttölämpötila järjestelmälle",
         "Se vaikuttaa vain kompressorin öljyn valintaan"
         ],
-        correctIndex: 0,
-        explanation: "Inversion lämpötila (~31°C CO2:lle) on kriittinen piste - sen yläpuolella lämmönsiirto kääntyy, mikä vaatii erityisjärjestelyjä korkeissa ulkolämpötiloissa."
-    },
-      {
-        question: "testikysymys, tuleeko tämä lainkaan?",
-        answers: [
-        "Ei näy",
-        "No näkyypäs, kunhan huijasin",
-        "Puijaaminen on metkaa",
-        "joopajoo"
-        ],
-        correctIndex: 3,
+        correctIndex: 1,
         explanation: "Inversion lämpötila (~31°C CO2:lle) on kriittinen piste - sen yläpuolella lämmönsiirto kääntyy, mikä vaatii erityisjärjestelyjä korkeissa ulkolämpötiloissa."
     }
 ];
@@ -364,3 +187,5 @@ window.questionBanks = {
     medium: mediumQuestions,
     hard: hardQuestions
 };
+
+console.log('questions.js ladattu. Kysymyksiä: easy=' + easyQuestions.length + ', medium=' + mediumQuestions.length + ', hard=' + hardQuestions.length);
