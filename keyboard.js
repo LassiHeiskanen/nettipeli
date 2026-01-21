@@ -52,6 +52,18 @@
         // Sulje näppäimistö kun klikataan overlayta
         if (elements.overlay) {
             elements.overlay.addEventListener('click', handleOverlayClick, false);
+            
+            // Näppäimistön näppäimet - event delegation
+            elements.overlay.addEventListener('click', function(e) {
+                var keyBtn = e.target.closest('.key');
+                if (keyBtn) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    var key = keyBtn.getAttribute('data-key');
+                    var mode = keyBtn.getAttribute('data-mode');
+                    handleKeyPress(key, mode);
+                }
+            }, false);
         }
 
         // Sulje ESC-näppäimellä
